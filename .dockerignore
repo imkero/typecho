@@ -2,3 +2,7 @@
 /*.txt
 /*.md
 !/.htaccess
+/tools
+
+# After installed
+/install.php
