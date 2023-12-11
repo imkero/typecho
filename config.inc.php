@@ -20,6 +20,6 @@ require_once __TYPECHO_ROOT_DIR__ . '/var/Typecho/Common.php';
 // config db
 $db = new \Typecho\Db('Pdo_SQLite', 'typecho_');
 $db->addServer(array (
-  'file' => '/var/www/html/usr/db/sqlite.db',
+  'file' => '/var/volume/db/sqlite.db',
 ), \Typecho\Db::READ | \Typecho\Db::WRITE);
 \Typecho\Db::set($db);

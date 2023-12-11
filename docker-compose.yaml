@@ -7,4 +7,4 @@ services:
       - 127.0.0.1:10080:80
     volumes:
       - ./usr/uploads:/var/www/html/usr/uploads
-      - ./usr/db:/var/www/html/usr/db
+      - ./db:/var/volume/db
