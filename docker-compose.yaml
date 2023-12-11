@@ -1,7 +1,7 @@
 version: '3'
 services:
   typecho:
-    image: ghcr.io/imkero/typecho-apache
+    image: ghcr.io/imkero/typecho-apache:latest
     container_name: typecho
     ports:
       - 127.0.0.1:10080:80
