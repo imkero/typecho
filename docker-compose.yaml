@@ -8,3 +8,4 @@ services:
     volumes:
       - ./usr/uploads:/var/www/html/usr/uploads
       - ./db:/var/volume/db
+    restart: unless-stopped
