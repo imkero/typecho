@@ -9,3 +9,7 @@ RewriteRule ^(.*)$ /index.php/$1 [L]
 <FilesMatch "\.(jpg|jpeg|png|gif|css|js)$">
 Header set Cache-Control "max-age=1800"
 </FilesMatch>
+
+<Files "sqlite.db">
+Require all denied
+</Files>
