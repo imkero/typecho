@@ -1,6 +1,8 @@
 /.*
 /*.txt
 /*.md
+/*.yaml
+/*.toml
 !/.htaccess
 /tools
 

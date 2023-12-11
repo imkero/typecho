@@ -4,7 +4,8 @@ COPY . /var/www/html
 
 RUN ln -s /mnt/volume/db /var/www/html/usr/db \
   && ln -s /mnt/volume/uploads /var/www/html/usr/uploads \
-  && a2enmod rewrite
+  && a2enmod rewrite \
+  && a2enmod headers
 
 WORKDIR /var/www/html
 
