@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - on_fly
+      - docker
 
 env:
   IMAGE_NAME: ghcr.io/imkero/typecho-apache
