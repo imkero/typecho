@@ -384,7 +384,7 @@ textarea {
   line-height: 1.8;
   word-wrap: break-word;
 }
-.post-content p {
+.post-content p:not(.more) {
   margin-top: 18px;
   margin-bottom: 18px;
   text-align: justify;
