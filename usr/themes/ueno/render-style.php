@@ -13,6 +13,7 @@ css file list
 */
 $styles = [
   'typlog.css',
+  'typlog-icon-using.css',
   'yue.css',
   'vars.css',
   'layout.css',
