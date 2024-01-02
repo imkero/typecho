@@ -69,3 +69,7 @@ p.more {
     padding-bottom: 20px;
   }
 }
+
+.side_logo-img {
+  border-radius: 50%;
+}

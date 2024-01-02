@@ -2,7 +2,9 @@
 <aside class="side">
   <div class="inner">
     <?php if ($this->options->logoUrl): ?>
-      <a class="side_logo" href="<?php $this->options->siteUrl(); ?>"><img src="<?php $this->options->logoUrl(); ?>" alt="<?php $this->options->title; ?>" width="120" height="120"></a>
+      <a class="side_logo" href="<?php $this->options->siteUrl(); ?>">
+        <img class="side_logo-img" src="<?php $this->options->logoUrl(); ?>" alt="<?php $this->options->title; ?>" width="120" height="120">
+      </a>
     <?php endif; ?>
     <h1 class="side_title">
       <a class="h-card" rel="me" href="<?php $this->options->siteUrl(); ?>">
