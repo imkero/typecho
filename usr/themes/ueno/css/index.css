@@ -9,3 +9,4 @@
 @import "./entry/tags.css";
 @import "./entry/license.css";
 @import "./entry/page-nav.css";
+@import "./override.css";

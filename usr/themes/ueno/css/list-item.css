@@ -206,21 +206,3 @@
     font-size: 20px;
   }
 }
-
-.item.Text .item-content,
-.item.Text .item-category {
-  color: var(--un-c-text-light);
-}
-
-p.more {
-  text-align: center;
-}
-
-.item-content a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-.item-content a:hover, .item-content a:active {
-  color: var(--link-color-active);
-}

@@ -12,7 +12,13 @@
             'author'   => _t('%s 发布的文章')
         ], '', ' - '); ?><?php $this->options->title(); ?></title>
 
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
+    <link rel="stylesheet" href="<?php
+if (!empty($this->options->dynamicStyleSlug)):
+  echo getPagePermalink($this->options->dynamicStyleSlug);
+else:
+  $this->options->themeUrl('style.css');
+endif;
+?>">
 
     <?php $this->header(); ?>
 </head>

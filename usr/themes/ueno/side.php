@@ -42,8 +42,5 @@
       </a>
       <?php endforeach; ?>
     </nav>
-    <div class="side_search">
-      <input class="js-search" type="text" placeholder="Search...">
-    </div>
   </div>
 </aside>

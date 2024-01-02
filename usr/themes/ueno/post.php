@@ -32,15 +32,21 @@
 
     </article>
 
-    <?php if ($this->is('post')): ?>
-        <div class="entry-license" itemscope="" itemtype="https://schema.org/CreativeWork">
-        <i class="icon icon-cc_by"></i>
-        <i class="icon icon-cc_nc"></i>
-        <div class="license_description" itemprop="usageInfo">
-        除非另有说明，本页面上的内容采用
-        <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" target="_blank" rel="noopener">知识共享 (Creative Commons) 署名—非商业性使用 4.0 公共许可协议 (CC BY-NC 4.0)</a> 进行许可。
-        </div>
-        </div>
+    <?php if ($this->is('post') && $this->options->licenseHtml): ?>
+    <div class="entry-license" itemscope="" itemtype="https://schema.org/CreativeWork">
+      <?php
+      if (!empty($this->options->licenseIcons)):
+        foreach ($this->options->licenseIcons as $icon):
+      ?>
+          <i class="icon icon-<?php echo $icon ?>"></i>
+      <?php
+        endforeach;
+      endif;
+      ?>
+      <div class="license_description" itemprop="usageInfo">
+        <?php $this->options->licenseHtml(); ?>
+      </div>
+    </div>
     <?php endif; ?>
 
     <?php $this->need('comments.php'); ?>

@@ -11,3 +11,5 @@ services:
       - ./config.inc.php:/var/www/html/config.inc.php:ro
       - /dev/null:/var/www/html/install.php:ro
     restart: unless-stopped
+    environment:
+      TZ=Asia/Shanghai
