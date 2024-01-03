@@ -8,6 +8,7 @@ services:
     volumes:
       - ./usr/uploads:/var/www/html/usr/uploads
       - ./db:/var/volume/db
+      - ./usr/themes/ueno/style.css:/var/www/html/usr/themes/ueno/style.css
       - ./config.inc.php:/var/www/html/config.inc.php:ro
       - /dev/null:/var/www/html/install.php:ro
     restart: unless-stopped

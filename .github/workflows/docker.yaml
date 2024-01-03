@@ -23,9 +23,24 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and Push Docker image
+      - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
+      
+      - name: Install aliyun-cli
+        run: |
+          wget -O aliyun-cli-linux-latest-amd64.tgz https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz
+          mkdir aliyun-cli
+          tar xzvf aliyun-cli-linux-latest-amd64.tgz -C ./aliyun-cli
+      
+      - name: Execute aliyun-cli command
+        env:
+          ALIYUN_CLI_COMMAND: ${{ secrets.ALIYUN_CLI_COMMAND }}
+          ALIBABACLOUD_ACCESS_KEY_ID: ${{ secrets.ALIBABACLOUD_ACCESS_KEY_ID }}
+          ALIBABACLOUD_ACCESS_KEY_SECRET: ${{ secrets.ALIBABACLOUD_ACCESS_KEY_SECRET }}
+          ALIBABACLOUD_REGION_ID: ${{ secrets.ALIBABACLOUD_REGION_ID }}
+        run: |
+          ./aliyun-cli/aliyun $ALIYUN_CLI_COMMAND
