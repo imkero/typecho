@@ -6,7 +6,8 @@ RUN a2enmod rewrite \
   && a2enmod headers \
   && chown root:root /var/www/html \
   && touch /var/www/html/usr/themes/ueno/style.css \
-  && chown www-data:www-data /var/www/html/usr/themes/ueno/style.css
+  && chown www-data:www-data /var/www/html/usr/themes/ueno/style.css \
+  && printf '[Date]\ndate.timezone="%s"\n', $TZ > /usr/local/etc/php/conf.d/tzone.ini
 
 WORKDIR /var/www/html
 
