@@ -16,6 +16,10 @@
             <?php $this->category(''); ?>
         </span>
         <time class="dt-published" datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>
+        <span id="view-count-container" class="view-count-container">
+          <i class="icon icon-browse view-icon"></i>
+          <span id="view-count-text">-</span>
+        </span>
       </div>
 
       <h1 class="p-name" itemprop="headline"><?php $this->title(); ?></h1>
@@ -49,7 +53,7 @@
     </div>
     <?php endif; ?>
 
-    <?php $this->need('comments.php'); ?>
+    <?php $this->need('comments.php'); var_dump(parse_url($this->permalink, PHP_URL_PATH));  ?>
   </div>
 </div>
 
