@@ -13,4 +13,4 @@ services:
       - /dev/null:/var/www/html/install.php:ro
     restart: unless-stopped
     environment:
-      TZ=Asia/Shanghai
+      TZ: Asia/Shanghai
