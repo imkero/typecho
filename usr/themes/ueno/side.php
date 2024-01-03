@@ -34,7 +34,19 @@
           </li>
         <?php endwhile; ?>
       <?php endif; ?>
+      <?php if ($this->user->hasLogin()): ?>
+    <hr class="side-hr">
+        <li>
+          <a href="<?php $this->options->adminUrl(); ?>">
+            <?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)
+          </a>
+        </li>
+        <li>
+          <a href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
+        </li>
+    <?php endif; ?>
     </ul>
+    <hr class="side-hr">
 
     <?php $sidebarSocialLinks = getSidebarSocialLinks(); ?>
     <nav class="side_social">
@@ -44,5 +56,9 @@
       </a>
       <?php endforeach; ?>
     </nav>
+
+    <?php $lastUpdateTime = getSiteLastUpdateTime(); if (!empty($lastUpdateTime)): ?>
+      <p class="side-description">最后更新于 <?php echo date('Y-m-d H:i', $lastUpdateTime); ?></p>
+    <?php endif; ?>
   </div>
 </aside>

@@ -63,8 +63,7 @@ class Ueno_Form_WriteStaticCSS extends \Typecho\Widget\Helper\Form\Element
         $script->html(self::ACTION_SCRIPT);
         $this->container($script);
 
-        $input = new \Typecho\Widget\Helper\Layout('input');
-        return $input;
+        return NULL;
     }
 
     /**
@@ -74,7 +73,6 @@ class Ueno_Form_WriteStaticCSS extends \Typecho\Widget\Helper\Form\Element
      */
     protected function inputValue($value)
     {
-        $this->input->setAttribute('value', $value);
     }
 
     const ACTION_SCRIPT = <<<SCRIPT
@@ -175,7 +173,7 @@ EOF;
     );
     $form->addInput($licenseHtml);
 
-    $form->addInput(new Ueno_Form_WriteStaticCSS());
+    $form->addItem(new Ueno_Form_WriteStaticCSS());
 
     $dynamicStyleSlug = new \Typecho\Widget\Helper\Form\Element\Text(
         'dynamicStyleSlug',
@@ -382,6 +380,16 @@ function handleAdminAction() {
 
 function getUenoVersion() {
     return htmlspecialchars('__ueno_version__');
+}
+
+function getSiteLastUpdateTime() {
+    \Widget\Contents\Post\Recent::alloc('pageSize=1')->to($recentPosts);
+    if ($recentPosts->have()) {
+        $recentPosts->next();
+        return $recentPosts->modified;
+    } else {
+        return null;
+    }
 }
 
 handleAdminAction();
