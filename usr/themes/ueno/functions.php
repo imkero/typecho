@@ -380,4 +380,8 @@ function handleAdminAction() {
     }
 }
 
+function getUenoVersion() {
+    return htmlspecialchars('__ueno_version__');
+}
+
 handleAdminAction();

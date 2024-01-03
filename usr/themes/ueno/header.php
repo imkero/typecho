@@ -16,7 +16,7 @@
 if (!empty($this->options->dynamicStyleSlug)):
   echo getPagePermalink($this->options->dynamicStyleSlug);
 else:
-  $this->options->themeUrl('style.css');
+  $this->options->themeUrl('style.css?v=' . getUenoVersion());
 endif;
 ?>">
 
