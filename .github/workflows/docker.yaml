@@ -38,9 +38,8 @@ jobs:
       
       - name: Execute aliyun-cli command
         env:
-          ALIYUN_CLI_COMMAND: ${{ secrets.ALIYUN_CLI_COMMAND }}
           ALIBABACLOUD_ACCESS_KEY_ID: ${{ secrets.ALIBABACLOUD_ACCESS_KEY_ID }}
           ALIBABACLOUD_ACCESS_KEY_SECRET: ${{ secrets.ALIBABACLOUD_ACCESS_KEY_SECRET }}
           ALIBABACLOUD_REGION_ID: ${{ secrets.ALIBABACLOUD_REGION_ID }}
         run: |
-          ./aliyun-cli/aliyun $ALIYUN_CLI_COMMAND
+          ./aliyun-cli/aliyun ${{ secrets.ALIYUN_CLI_COMMAND }}
