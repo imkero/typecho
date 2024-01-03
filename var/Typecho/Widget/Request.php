@@ -8,6 +8,7 @@ use Typecho\Request as HttpRequest;
 /**
  * Widget Request Wrapper
  */
+#[\AllowDynamicProperties] 
 class Request
 {
     /**
