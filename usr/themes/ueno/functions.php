@@ -382,8 +382,28 @@ function getUenoVersion() {
     return htmlspecialchars('__ueno_version__');
 }
 
+class RecentModifiedPost extends \Widget\Base\Contents
+{
+    /**
+     * 执行函数
+     *
+     * @throws \Typecho\Db\Exception
+     */
+    public function execute()
+    {
+        $this->parameter->setDefault(['pageSize' => $this->options->postsListSize]);
+
+        $this->db->fetchAll($this->select()
+            ->where('table.contents.status = ?', 'publish')
+            ->where('table.contents.created < ?', $this->options->time)
+            ->where('table.contents.type = ?', 'post')
+            ->order('table.contents.modified', \Typecho\Db::SORT_DESC)
+            ->limit($this->parameter->pageSize), [$this, 'push']);
+    }
+}
+
 function getSiteLastUpdateTime() {
-    \Widget\Contents\Post\Recent::alloc('pageSize=1')->to($recentPosts);
+    RecentModifiedPost::alloc('pageSize=1')->to($recentPosts);
     if ($recentPosts->have()) {
         $recentPosts->next();
         return $recentPosts->modified;

@@ -16,8 +16,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
 
-date_default_timezone_set('Asia/Shanghai');
-
 /**
  * 初始化模块
  *
