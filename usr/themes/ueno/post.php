@@ -53,7 +53,7 @@
     </div>
     <?php endif; ?>
 
-    <?php $this->need('comments.php'); var_dump(parse_url($this->permalink, PHP_URL_PATH));  ?>
+    <?php $this->need('comments.php'); ?>
   </div>
 </div>
 
