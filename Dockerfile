@@ -2,6 +2,8 @@ FROM php:8.3-apache
 
 COPY . /var/www/html
 
+ENV TZ=Asia/Shanghai
+
 RUN a2enmod rewrite \
   && a2enmod headers \
   && chown root:root /var/www/html \
