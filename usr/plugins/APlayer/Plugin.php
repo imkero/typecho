@@ -447,6 +447,7 @@ EOF;
      * @return boolean|multitype:multitype:unknown Ambigous <>
      */
     private static function parse_netease($id, $type){
+        return false;
         //当id过长时md5避免缓存出错
         $key = 'netease_'.$type.'_'.(strlen($id) > 20 ? md5($id) : $id);
         $result = self::cache_get($key);
@@ -607,6 +608,7 @@ EOF;
      * @return boolean|string
      */
     private static function getcover($words){
+        return false;
 
         $key = 'cover_'.md5($words);
 
@@ -642,6 +644,7 @@ EOF;
      * @return boolean|string
      */
     private static function getlrc($url){
+        return false;
         $key = 'lrc_'.md5($url);
         if($g = self::cache_get($key)){
             if(!isset($g[0])) return false;
