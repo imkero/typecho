@@ -27,6 +27,10 @@ hr, .yue hr {
   border: 1px solid #E9E9E9;
   border-width: 2px 0 0 0;
 }
+
+pre, code {
+  line-height: 1.5;
+}
  
 code {
   padding: 2px 4px; color: #B94A48;
@@ -171,4 +175,17 @@ textarea.comment-input {
 
 .comment-input::placeholder {
   color: #bcc3ce
+}
+
+:root {
+  --syntax-light-pre-bg: #f5f2f0;
+  --syntax-light-text: #000;
+}
+
+.aplayer {
+  display: none;
+}
+
+.aplayer-ready .aplayer {
+  display: block;
 }

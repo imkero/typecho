@@ -145,7 +145,7 @@ class APlayer_Plugin implements Typecho_Plugin_Interface
         $playerurl = Helper::options()->pluginUrl.'/APlayer/assets/dist/';
         echo '
 <!-- APlayer Start -->
-<link rel="stylesheet" type="text/css" href="'.$playerurl.'APlayer.min.css" media="print" onload="this.media=\'all\'" />
+<link rel="stylesheet" type="text/css" href="'.$playerurl.'APlayer.min.css" media="print" onload="this.media=\'all\'; document.body.classList.add(\'aplayer-ready\')" />
 <script>var APlayers = [];var APlayerOptions = [];</script>
 <!-- APlayer End -->
 ';
