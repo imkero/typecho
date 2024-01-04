@@ -35,14 +35,14 @@
         <?php endwhile; ?>
       <?php endif; ?>
       <?php if ($this->user->hasLogin()): ?>
-    <hr class="side-hr">
+        <hr class="side-hr">
         <li>
           <a href="<?php $this->options->adminUrl(); ?>">
-            <?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)
+            <?php _e('管理后台'); ?> <span class="side-nav-more">(<?php $this->user->screenName(); ?>)</span>
           </a>
         </li>
-        <li>
-          <a href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
+        <li class="side-nav-more">
+          <a href="<?php $this->options->logoutUrl(); ?>"><?php _e('登出'); ?></a>
         </li>
     <?php endif; ?>
     </ul>
