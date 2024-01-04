@@ -11,7 +11,7 @@
   color: var(--un-c-text-light);
 }
 
-.blog-foot div {
+.blog-foot > div {
   padding: 16px 20px;
   font-family: var(--un-f-base);
   font-size: 13px;

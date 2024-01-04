@@ -183,6 +183,14 @@ EOF;
         _t('您需要创建一个“自定义模板”为“动态渲染 CSS”的独立页面，然后将这个独立页面的 slug 填入。填写该字段后主题将从这个页面加载 CSS 样式，一般用于开发调试。若不填写该字段（默认情况），会加载主题目录下的 style.css')
     );
     $form->addInput($dynamicStyleSlug);
+
+    $footerHtml = new \Typecho\Widget\Helper\Form\Element\Textarea(
+        'footerHtml',
+        NULL,
+        $footerHtml, 
+        '页脚 HTML', 
+    );
+    $form->addInput($footerHtml);
 }
 
 function themeFields($layout)
