@@ -122,6 +122,10 @@ time.dt-published {
   --icon-url: url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 24 24' id='t-icon-browse' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_8726_7319)'%3E%3Cpath d='M2.097 12c1.441 4.08 5.332 7 9.903 7 4.57 0 8.46-2.92 9.902-7C20.461 7.92 16.57 5 12 5c-4.57 0-8.462 2.92-9.903 7zm-2.008-.304C1.7 6.654 6.421 3 12 3c5.58 0 10.302 3.654 11.91 8.696l.098.304-.097.304C22.3 17.346 17.578 21 12 21 6.42 21 1.698 17.346.09 12.304L-.009 12l.097-.304zM12 9a3 3 0 100 6 3 3 0 000-6zm-5 3a5 5 0 1110 0 5 5 0 01-10 0z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3C/svg%3E")
 }
 
+.icon-link {
+  --icon-url: url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 24 24' id='t-icon-arrow-right-up' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.99 16.596l8.192-8.192H7.818v-2h9.778v9.778h-2V9.818L7.403 18.01 5.99 16.596z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E");
+}
+
 .view-count-container {
   float: right;
   color: rgba(var(--un-rc-invert), 0.50);

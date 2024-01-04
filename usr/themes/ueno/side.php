@@ -32,7 +32,14 @@
         <?php endwhile; ?>
       <?php endif; ?>
       <?php foreach ($sidebarNavLinks as $nav): ?>
-        <li><a href="<?php echo $nav['href']; ?>" <?php if ($nav['isExternal']): ?> target="_blank" rel="noopener"<?php endif; ?>><?php echo $nav['title']; ?></a></li>
+        <li>
+          <a href="<?php echo $nav['href']; ?>" <?php if ($nav['isExternal']): ?> target="_blank" rel="noopener"<?php endif; ?>>
+            <?php echo $nav['title']; ?>
+            <?php if ($nav['isExternal']): ?>
+              <i class="icon icon-link"></i>
+            <?php endif; ?>
+          </a>
+        </li>
       <?php endforeach; ?>
       <?php if ($this->user->hasLogin()): ?>
         <hr class="side-hr">
