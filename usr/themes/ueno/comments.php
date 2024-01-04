@@ -29,25 +29,25 @@
                 <?php else: ?>
                     <p>
                         <label for="author" class="required"><?php _e('称呼'); ?></label>
-                        <input type="text" name="author" id="author" class="text"
+                        <input type="text" name="author" id="author" class="comment-input"
                                value="<?php $this->remember('author'); ?>" required/>
                     </p>
                     <p>
                         <label
                             for="mail"<?php if ($this->options->commentsRequireMail): ?> class="required"<?php endif; ?>><?php _e('Email'); ?></label>
-                        <input type="email" name="mail" id="mail" class="text"
+                        <input type="email" name="mail" id="mail" class="comment-input"
                                value="<?php $this->remember('mail'); ?>"<?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
                     </p>
                     <p>
                         <label
                             for="url"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif; ?>><?php _e('网站'); ?></label>
-                        <input type="url" name="url" id="url" class="text" placeholder="<?php _e('http://'); ?>"
+                        <input type="url" name="url" id="url" class="comment-input" placeholder="<?php _e('https://'); ?>"
                                value="<?php $this->remember('url'); ?>"<?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
                     </p>
                 <?php endif; ?>
                 <p>
                     <label for="textarea" class="required"><?php _e('内容'); ?></label>
-                    <textarea rows="8" cols="50" name="text" id="textarea" class="textarea"
+                    <textarea rows="8" cols="50" name="text" id="textarea" class="comment-input"
                               required><?php $this->remember('text'); ?></textarea>
                 </p>
                 <p>

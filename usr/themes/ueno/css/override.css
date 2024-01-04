@@ -128,3 +128,47 @@ time.dt-published {
   top: -2px;
   margin-right: 2px;
 }
+
+.comment-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff;
+  background-image: none;
+  border: .05rem solid #bcc3ce;
+  border-radius: .1rem;
+  height: 1.8rem;
+  line-height: 1.2rem;
+  max-width: 100%;
+  outline: 0;
+  padding: .25rem .5rem;
+  position: relative;
+  transition: background .2s,border .2s,box-shadow .2s,color .2s;
+}
+
+input.comment-input {
+  min-width: 280px;
+}
+
+textarea.comment-input {
+  width: 100%;
+  min-height: 8em;
+  padding: .5em;
+}
+
+.comment-input:focus {
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 .1rem rgba(var(--link-color-rgb), 0.2);
+}
+
+.comment-input:-ms-input-placeholder {
+  color: #bcc3ce
+}
+
+.comment-input::-ms-input-placeholder {
+  color: #bcc3ce
+}
+
+.comment-input::placeholder {
+  color: #bcc3ce
+}

@@ -38,6 +38,7 @@
   --t-on-secondary: 255,255,255;
   --secondary-text-rgb: 255,255,255;
   --link-color: #3354AA;
+  --link-color-rgb: 51, 84, 170;
   --link-color-active: #444;
 }
 
@@ -67,7 +68,7 @@
 }
 
 .yue {
-  --yue-f-base: merriweather, var(--un-f-sys-sans), var(--un-f-cjk), sans-serif;
+  --yue-f-base: var(--un-f-sys-sans), var(--un-f-cjk), sans-serif;
   --yue-f-quote: var(--yue-f-base);
   --yue-f-heading: var(--un-f-heading);
   --yue-f-mono: var(--un-f-mono);
