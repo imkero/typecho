@@ -145,7 +145,7 @@ class APlayer_Plugin implements Typecho_Plugin_Interface
         $playerurl = Helper::options()->pluginUrl.'/APlayer/assets/dist/';
         echo '
 <!-- APlayer Start -->
-<link rel="stylesheet" type="text/css" href="'.$playerurl.'APlayer.min.css" />
+<link rel="stylesheet" type="text/css" href="'.$playerurl.'APlayer.min.css" media="print" onload="this.media=\'all\'" />
 <script>var APlayers = [];var APlayerOptions = [];</script>
 <!-- APlayer End -->
 ';
@@ -164,26 +164,34 @@ class APlayer_Plugin implements Typecho_Plugin_Interface
         
         echo <<<EOF
 <!-- APlayer Start -->
-<script type="text/javascript" src="{$playerurl}APlayer.min.js"></script>
+
 <script>
-var len = APlayerOptions.length;
-for(var i=0;i<len;i++){
-    APlayers[i] = new APlayer({
-        element: document.getElementById('player' + APlayerOptions[i]['id']),
-        narrow: false,
-        preload: APlayerOptions[i]['preload'],
-        mutex: APlayerOptions[i]['mutex'],
-        autoplay: APlayerOptions[i]['autoplay'],
-        showlrc: APlayerOptions[i]['showlrc'],
-        music: APlayerOptions[i]['music'],
-        theme: APlayerOptions[i]['theme']
-        });
-    APlayers[i].init();
-}
+(function() {
+    var initAPlayer = function() {
+        var len = APlayerOptions.length;
+        for(var i=0;i<len;i++){
+            APlayers[i] = new APlayer({
+                element: document.getElementById('player' + APlayerOptions[i]['id']),
+                narrow: false,
+                preload: APlayerOptions[i]['preload'],
+                mutex: APlayerOptions[i]['mutex'],
+                autoplay: APlayerOptions[i]['autoplay'],
+                showlrc: APlayerOptions[i]['showlrc'],
+                music: APlayerOptions[i]['music'],
+                theme: APlayerOptions[i]['theme']
+            });
+            APlayers[i].init();
+        };
+    };
+    if (APlayerOptions.length > 0) {
+        var ap = document.createElement('script');
+        ap.src = "{$playerurl}APlayer.min.js";
+        ap.onload = initAPlayer;
+        document.body.appendChild(ap);
+    }
+})();
 </script>
 <!-- APlayer End -->
-
-
 EOF;
      }
      
