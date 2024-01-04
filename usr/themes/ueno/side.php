@@ -19,9 +19,6 @@
     <ul class="side_links">
       <li><a href="<?php $this->options->siteUrl(); ?>">首页</a></li>
 
-      <?php foreach ($sidebarNavLinks as $nav): ?>
-        <li><a href="<?php echo $nav['href']; ?>" <?php if ($nav['isExternal']): ?> target="_blank" rel="noopener"<?php endif; ?>><?php echo $nav['title']; ?></a></li>
-      <?php endforeach; ?>
       <?php if (in_array('ShowPages', $this->options->sidebarBlock)): ?>
         <?php \Widget\Contents\Page\Rows::alloc()->to($pages); ?>
         <?php while ($pages->next()): ?>
@@ -34,6 +31,9 @@
           </li>
         <?php endwhile; ?>
       <?php endif; ?>
+      <?php foreach ($sidebarNavLinks as $nav): ?>
+        <li><a href="<?php echo $nav['href']; ?>" <?php if ($nav['isExternal']): ?> target="_blank" rel="noopener"<?php endif; ?>><?php echo $nav['title']; ?></a></li>
+      <?php endforeach; ?>
       <?php if ($this->user->hasLogin()): ?>
         <hr class="side-hr">
         <li>
