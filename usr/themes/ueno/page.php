@@ -16,13 +16,6 @@
       <div class="e-content js-content yue" itemprop="articleBody">
           <?php $this->content(); ?>
       </div>
-
-      <?php if ($this->tags): ?>
-        <div class="entry-tags">
-          <?php $this->tags('', true, ''); ?>
-        </div>
-      <?php endif; ?>
-
     </article>
     <?php $this->need('comments.php'); ?>
   </div>

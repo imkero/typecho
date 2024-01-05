@@ -202,6 +202,16 @@ function themeFields($layout)
         _t('封面图 URL')
     );
     $layout->addItem($coverUrl);
+
+    $jsonData = new \Typecho\Widget\Helper\Form\Element\Textarea(
+        'jsonData',
+        null,
+        null,
+        _t('JSON 数据')
+    );
+    $layout->addItem($jsonData);
+
+    $jsonData->input->style = "font-family: monospace; width: 100%; height: 160px";
 }
 
 function getSidebarNavLinks()
@@ -436,6 +446,15 @@ function getSiteLastUpdateTime() {
     } else {
         return null;
     }
+}
+
+function getArchiveJsonData($widget) {
+    $json = $widget->fields->jsonData;
+    if (empty($json)) {
+        return null;
+    }
+
+    return json_decode($json, true);
 }
 
 handleAdminAction();
