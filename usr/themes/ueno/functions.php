@@ -186,8 +186,8 @@ EOF;
 
     $footerHtml = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'footerHtml',
-        NULL,
-        $footerHtml, 
+        null,
+        '', 
         '页脚 HTML', 
     );
     $form->addInput($footerHtml);
