@@ -212,6 +212,17 @@ function themeFields($layout)
     $layout->addItem($jsonData);
 
     $jsonData->input->style = "font-family: monospace; width: 100%; height: 160px";
+
+    $disableToc = new \Typecho\Widget\Helper\Form\Element\Radio(
+        'disableToc',
+        [
+            '0' => _t('显示目录'),
+            '1' => _t('隐藏目录'),
+        ],
+        '0',
+        _t('目录')
+    );
+    $layout->addItem($disableToc);
 }
 
 function getSidebarNavLinks()
@@ -455,6 +466,119 @@ function getArchiveJsonData($widget) {
     }
 
     return json_decode($json, true);
+}
+
+function _printToc($toc, $index = 0)
+{
+    if (!isset($toc[$index]))
+        return;
+
+    if (empty($toc[$index]['children']))
+        return;
+?>
+<ul>
+<?php 
+foreach ($toc[$index]['children'] as $k): 
+$item = $toc[$k];
+?>
+<li>
+<?php if (isset($item['id'])): ?>
+<a href="#<?php echo $item['id']; ?>">
+    <span><?php echo $item['title']; ?></span>
+</a>
+<?php 
+endif;
+_printToc($toc, $k);
+?>
+</li>
+<?php endforeach; ?>
+</ul>
+<?php
+}
+
+function printContentWithToc($content)
+{
+    $toc = array(
+        0 => array(
+            'parent' => null, 
+            'children' => array(), 
+        ),
+    );
+
+    $tocNumStack = array();
+
+    $content = preg_replace_callback(
+        '/<h([2-6])(|\s[^>]*)>(.*?)<\/h\1>/i', 
+        function ($matches) use(&$toc, &$tocNumStack) {
+            $tocIndex = count($toc) - 1;
+            $depthCounter = count($tocNumStack);
+            
+            $depth = intval($matches[1]) - 1;
+            $title = trim(strip_tags($matches[3]));
+
+            if ($depthCounter < $depth)
+            {
+                for (; $depthCounter < $depth - 1; $depthCounter++)
+                {
+                    $newIndex = count($toc);
+                    $toc[] = array(
+                        'parent' => $tocIndex,
+                        'children' => array(),
+                    );
+                    $toc[$tocIndex]['children'][] = $newIndex;
+                    $tocIndex = $newIndex;
+                    $tocNumStack[] = 1;
+                }
+                if (count($tocNumStack) < $depth)
+                {
+                    $tocNumStack[] = 0;
+                }
+            }
+            else
+            {
+                array_splice($tocNumStack, $depth);
+                for (; $depthCounter >= $depth; $depthCounter--)
+                {
+                    $tocIndex = $toc[$tocIndex]['parent'];
+                }
+            }
+
+            $newIndex = count($toc);
+            $tocNumStack[$depth - 1]++;
+            $id = preg_replace(
+                '/\s+/', 
+                '-', 
+                implode('-', $tocNumStack) . '-' . $title
+            );
+            $toc[] = array(
+                'parent' => $tocIndex,
+                'children' => array(),
+                'id' => $id,
+                'title' => $title,
+                'index' => $tocNumStack[$depth - 1],
+            );
+            $toc[$tocIndex]['children'][] = $newIndex;
+            $tocIndex = $newIndex;
+            
+            return "<h{$matches[1]} id=\"{$id}\"{$matches[2]}>{$matches[3]}</h{$matches[1]}>";
+        },
+        $content
+    );
+
+    ob_start();
+    echo '<div class="toc"><div class="toc-title">Table of Contents</div>';
+    _printToc($toc);
+    echo '</div>';
+    $toc = ob_get_clean();
+
+    $morePos = strpos($content, '<!--more-->');
+    if ($morePos !== false) {
+        $content = substr_replace($content, $toc, $morePos, 0);
+    } else {
+        $content = $toc . $content;
+    }
+
+    echo $content;
 }
 
 handleAdminAction();

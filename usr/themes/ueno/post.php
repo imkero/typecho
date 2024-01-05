@@ -25,7 +25,7 @@
       <h1 class="p-name" itemprop="headline"><?php $this->title(); ?></h1>
 
       <div class="e-content js-content yue" itemprop="articleBody">
-          <?php $this->content(); ?>
+          <?php if ($this->fields->disableToc) { $this->content(); } else { printContentWithToc($this->content); } ?>
       </div>
 
       <?php if ($this->tags): ?>
