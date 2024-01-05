@@ -443,7 +443,7 @@ class RecentModifiedPost extends \Widget\Base\Contents
         $this->db->fetchAll($this->select()
             ->where('table.contents.status = ?', 'publish')
             ->where('table.contents.created < ?', $this->options->time)
-            ->where('table.contents.type = ?', 'post')
+            ->where('table.contents.type IN ?', ['post', 'page'])
             ->order('table.contents.modified', \Typecho\Db::SORT_DESC)
             ->limit($this->parameter->pageSize), [$this, 'push']);
     }
