@@ -566,14 +566,17 @@ function printContentWithToc($content)
     );
 
     ob_start();
-    echo '<div class="toc"><div class="toc-title">Table of Contents</div>';
+    echo '<div class="toc-container"><div class="toc"><div class="toc-title">Table of Contents</div>';
     _printToc($toc);
-    echo '</div>';
+    echo '</div></div>';
     $toc = ob_get_clean();
 
-    $morePos = strpos($content, '<!--more-->');
-    if ($morePos !== false) {
-        $content = substr_replace($content, $toc, $morePos, 0);
+    $tocPos = strpos($content, '<!--toc-->');
+    if ($tocPos === false) {
+        $tocPos = strpos($content, '<!--more-->');
+    }
+    if ($tocPos !== false) {
+        $content = substr_replace($content, $toc, $tocPos, 0);
     } else {
         $content = $toc . $content;
     }

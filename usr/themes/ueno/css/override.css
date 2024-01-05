@@ -194,10 +194,14 @@ textarea.comment-input {
   display: block;
 }
 
+.toc-container {
+  margin-bottom: 1.12em;
+}
+
 .toc {
   border: 1px solid rgba(var(--un-rc-invert), 0.2);
-  padding: 16px 32px 16px 20px;
   display: inline-block;
+  padding: 16px 32px 16px 20px;
 }
 
 .toc > ul {
@@ -213,4 +217,8 @@ textarea.comment-input {
 
 .e-content {
   word-break: break-all;
+}
+
+.e-content table {
+  margin-bottom: 1.12em;
 }
