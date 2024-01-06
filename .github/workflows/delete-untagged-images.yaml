@@ -1,0 +1,21 @@
+name: Delete untagged images
+
+on:
+  push:
+    branches:
+      - docker
+  workflow_dispatch:      # Manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete untagged images
+        uses: Chizkiyahu/delete-untagged-ghcr-action@v3
+        with:
+          token: ${{ secrets.DELETE_PACKAGES_TOKEN }}
+          repository_owner: ${{ github.repository_owner }}
+          repository: ${{ github.repository }}
+          package_name: typecho-apache
+          untagged_only: true
+          owner_type: user
