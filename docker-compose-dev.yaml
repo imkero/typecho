@@ -1,0 +1,15 @@
+version: '3'
+services:
+  typecho:
+    build: .
+    container_name: typecho
+    ports:
+      - 80:80
+    volumes:
+      - ./usr:/var/www/html/usr
+      - ./var:/var/www/html/var:ro
+      - ./admin:/var/www/html/admin:ro
+      - ./index.php:/var/www/html/index.php:ro
+      - ./install.php:/var/www/html/install.php:ro
+      - ./config.inc.php:/var/www/html/config.inc.php:ro
+    restart: unless-stopped
