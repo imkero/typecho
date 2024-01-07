@@ -232,6 +232,10 @@ class Service extends BaseOptions implements ActionInterface
             Response::getInstance()->addResponder(function () {
                 if (!empty($this->asyncRequests) && $client = Client::get()) {
                     try {
+                        if (function_exists('ignore_user_abort')) {
+                            ignore_user_abort(true);
+                        }
+
                         $client->setHeader('User-Agent', $this->options->generator)
                             ->setTimeout(2)
                             ->setJson([
