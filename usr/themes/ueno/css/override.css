@@ -224,3 +224,7 @@ textarea.comment-input {
 .e-content table {
   margin-bottom: 1.12em;
 }
+
+.aplayer .aplayer-pic .aplayer-button i {
+  color: #fff;
+}
