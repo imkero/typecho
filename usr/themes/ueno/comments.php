@@ -7,7 +7,10 @@
     <?php if ($comments->have()): ?>
         <h3><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h3>
 
-        <?php $comments->listComments(); ?>
+        <?php $comments->listComments([
+            'defaultAvatar' => 'retro',
+            'avatarSize' => 72,
+        ]); ?>
 
         <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
 
