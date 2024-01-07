@@ -30,6 +30,7 @@
   display: block;
   margin-bottom: 3px;
   color: #444;
+  line-height: 1;
 }
 .comment-author .avatar {
   float: left;
@@ -60,4 +61,8 @@
 #comment-form .required:after {
   content: " *";
   color: #C00;
+}
+.comment-author .avatar {
+  width: 36px;
+  height: 36px;
 }
