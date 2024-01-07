@@ -49,16 +49,8 @@
           </a>
         </li>
         <li class="side-nav-more">
-          <a href="javascript:void(0);" onclick="confirmLogout()"><?php _e('登出'); ?></a>
+          <a href="<?php $this->options->logoutUrl(); ?>"><?php _e('登出'); ?></a>
         </li>
-        <script>
-          function confirmLogout() {
-            var result = window.confirm("确定要登出吗？");
-            if (result) {
-              location.href = <?php echo json_encode($this->options->logoutUrl); ?>;
-            }
-          }
-        </script>
     <?php endif; ?>
     </ul>
     <hr class="side-hr">
