@@ -3,7 +3,14 @@
   <div class="inner">
     <?php if ($this->options->logoUrl): ?>
       <a class="side_logo" href="<?php $this->options->siteUrl(); ?>">
-        <img class="side_logo-img" src="<?php $this->options->logoUrl(); ?>" alt="<?php $this->options->title; ?>" width="120" height="120">
+        <img
+          class="side_logo-img"
+          src="<?php $this->options->logoUrl(); ?>"
+          alt="<?php $this->options->title; ?>"
+          width="120"
+          height="120"
+          loading="lazy"
+        >
       </a>
     <?php endif; ?>
     <h1 class="side_title">
