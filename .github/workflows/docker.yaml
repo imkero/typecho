@@ -11,7 +11,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: production
+    concurrency: production
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
