@@ -228,3 +228,10 @@ textarea.comment-input {
 .aplayer .aplayer-pic .aplayer-button i {
   color: #fff;
 }
+
+.e-content > p.small {
+  font-size: .8em;
+  color: #666;
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+}
