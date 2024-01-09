@@ -566,7 +566,7 @@ function printContentWithToc($content)
     );
 
     ob_start();
-    echo '<div class="toc-container"><div class="toc"><div class="toc-title">Table of Contents</div>';
+    echo '<div class="toc-container"><div class="toc"><div class="toc-title">文章目录</div>';
     _printToc($toc);
     echo '</div></div>';
     $toc = ob_get_clean();
