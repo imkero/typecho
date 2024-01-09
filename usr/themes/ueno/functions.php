@@ -101,6 +101,19 @@ document.addEventListener('DOMContentLoaded', function () {
 SCRIPT;
 }
 
+class Widget_Metas_Category_List_CountOrdered extends \Widget\Base\Metas
+{
+    public function execute()
+    {
+        $this->db->fetchAll(
+            $this->select()
+                ->where('type = ?', 'category')
+                ->order('table.metas.count', \Typecho\Db::SORT_DESC),
+            [$this, 'push'],
+        );
+    }
+}
+
 function themeConfig($form)
 {
     $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text(

@@ -83,7 +83,7 @@ class Rows extends Metas
     {
         $parameter->setDefault('ignore=0&current=');
 
-        $select = $this->select()->where('type = ?', 'category');
+        $select = $this->select();
 
         $categories = $this->db->fetchAll($select->order('table.metas.order', Db::SORT_ASC));
         foreach ($categories as $category) {

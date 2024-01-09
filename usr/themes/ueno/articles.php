@@ -20,8 +20,8 @@ $this->need('side.php');
           分类
         </h2>
         <ul class="archive-category-list">
-          <?php $this->widget('Widget_Metas_Category_List')->to($categories); ?>
-          <?php while($categories->next()): ?>
+          <?php $this->widget('Widget_Metas_Category_List_CountOrdered')->to($categories); ?>
+          <?php while ($categories->next()): ?>
             <li><a href="<?php $categories->permalink(); ?>" title="<?php $categories->name(); ?>"><?php $categories->name(); ?></a> (<?php $categories->count(); ?>)</li>
           <?php endwhile; ?>
         </ul>
