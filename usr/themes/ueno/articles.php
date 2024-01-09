@@ -21,7 +21,7 @@ $this->need('side.php');
         </h2>
         <ul class="archive-category-list">
           <?php $this->widget('Widget_Metas_Category_List_CountOrdered')->to($categories); ?>
-          <?php while ($categories->next()): ?>
+          <?php while ($categories->next()): if ($categories->count === 0) continue; ?>
             <li><a href="<?php $categories->permalink(); ?>" title="<?php $categories->name(); ?>"><?php $categories->name(); ?></a> (<?php $categories->count(); ?>)</li>
           <?php endwhile; ?>
         </ul>
