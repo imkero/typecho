@@ -420,25 +420,18 @@ function handleAdminAction() {
     }
 }
 
-function getUenoVersion() {
-    return '__ueno_version__'; // will be replaced in actions pipeline
-}
-
-function getUenoVersionShort() {
-    return substr(getUenoVersion(), 0, 8);
-}
-
 function getStaticCSSVersion() {
     $modTime = 0;
     if (@file_exists(__DIR__ . '/style.css')) {
         $modTime = @filemtime(__DIR__ . '/style.css');
     }
 
-    $version = getUenoVersionShort();
+    $version = '';
 
     if ($modTime) {
-        $version .= '-' . $modTime;
+        $version .= $modTime;
     }
+
     return htmlspecialchars($version);
 }
 

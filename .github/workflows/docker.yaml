@@ -24,9 +24,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Replace placeholder value
-        run: sed -i "s/__ueno_version__/${{ github.sha }}/" usr/themes/ueno/functions.php
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
