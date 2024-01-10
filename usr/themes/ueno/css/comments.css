@@ -15,7 +15,7 @@
   background: #FFF;
 }
 .comment-list li.comment-by-author {
-  background: #FFF9E8;
+  background: #fafbff;
 }
 .comment-list li .comment-reply {
   text-align: right;
@@ -23,7 +23,7 @@
 }
 .comment-meta a {
   color: #999;
-  font-size: .92857em;
+  font-size: .9em;
   text-decoration: none;
 }
 .comment-author {
@@ -31,6 +31,7 @@
   margin-bottom: 3px;
   color: #444;
   line-height: 1;
+  font-size: .95em;
 }
 .comment-author .avatar {
   float: left;
@@ -65,4 +66,17 @@
 .comment-author .avatar {
   width: 36px;
   height: 36px;
+}
+.commtent-content p {
+  margin-top: 0;
+  margin-bottom: 1.12em;
+}
+.comment-content {
+  font-size: 15px;
+  line-height: 1.62;
+}
+.comment-content pre {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
 }
