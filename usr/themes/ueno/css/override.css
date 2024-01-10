@@ -235,3 +235,17 @@ textarea.comment-input {
   border: 1px solid #ccc;
   padding: 10px 14px;
 }
+
+.archives-item-category {
+  color: #888;
+  margin-right: 4px;
+}
+
+.archives-item-category::before {
+  content: '[';
+  margin-right: 2px;
+}
+.archives-item-category::after {
+  content: ']';
+  margin-left: 2px;
+}

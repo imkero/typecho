@@ -32,7 +32,7 @@ $this->need('side.php');
           $output = '<div id="archives">';
           while ($archives->next()) {
             $year_tmp = date('Y', $archives->created);
-            $mon_tmp = date('m', $archives->created);
+            $mon_tmp = date('n', $archives->created);
 
             if ($mon != $mon_tmp && $mon > 0) $output .= '</ul></li>';
             if ($year != $year_tmp && $year > 0) $output .= '</ul>';
@@ -47,7 +47,14 @@ $this->need('side.php');
               $output .= '<li><span>'. $mon .' 月</span>'; // 输出月份
               $output .= '<ul>';
             }
-            $output .= '<li>'.date('d 日: ',$archives->created).'<a href="'.$archives->permalink .'" target="_blank">'. $archives->title .'</a></li>'; // 输出文章
+            $output .= '<li>'
+              . implode('', array_map(function ($category) {
+                return '<span class="archives-item-category">' . $category['name'] . '</span> ';
+              }, $archives->categories))
+              . '<a href="'.$archives->permalink
+              . '" target="_blank">'
+              . $archives->title
+              . '</a></li>'; // 输出文章
           }
 
           if ($year > 0) {
