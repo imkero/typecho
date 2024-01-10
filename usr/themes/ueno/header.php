@@ -19,7 +19,7 @@ header('Cache-Control: no-cache');
 if (!empty($this->options->dynamicStyleSlug)):
   echo getPagePermalink($this->options->dynamicStyleSlug);
 else:
-  $this->options->themeUrl('style.css?v=' . getUenoVersion());
+  $this->options->themeUrl('style.css?v=' . getStaticCSSVersion());
 endif;
 ?>">
 
