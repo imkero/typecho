@@ -5,3 +5,5 @@
 !/.htaccess
 /tools
 /usr/themes/ueno/style.css
+/Makefile
+/Dockerfile
