@@ -279,10 +279,9 @@ function getSidebarSocialLinks()
 function getPagePermalink($slug) {
     \Widget\Options::alloc()->to($options);
 
-    return \Typecho\Router::url(
-        'page',
-        ['slug' => $slug],
-        \Typecho\Common::url('index.php', $options->rootUrl)
+    return \Typecho\Common::url(
+        \Typecho\Router::url('page', ['slug' => $slug]),
+        $options->index
     );
 }
 
