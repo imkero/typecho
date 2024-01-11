@@ -224,6 +224,8 @@ function themeFields($layout)
     );
     $layout->addItem($jsonData);
 
+    $jsonData->input->style = "font-family: monospace; width: 100%";
+
     $invisibleContent = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'invisibleContent',
         null,
@@ -233,7 +235,7 @@ function themeFields($layout)
     );
     $layout->addItem($invisibleContent);
 
-    $jsonData->input->style = "font-family: monospace; width: 100%; height: 160px";
+    $invisibleContent->input->style = "font-family: monospace; width: 100%";
 
     $disableToc = new \Typecho\Widget\Helper\Form\Element\Radio(
         'disableToc',
