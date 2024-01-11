@@ -65,6 +65,8 @@ $this->need('side.php');
           ?>
         </div>
       </div>
+
+      <?php $this->options->invisibleContent(); ?>
     </article>
   </div>
 </div>

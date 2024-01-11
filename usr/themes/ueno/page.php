@@ -17,8 +17,10 @@ $this->need('side.php');
       <h1 class="p-name" itemprop="headline"><?php $this->title(); ?></h1>
 
       <div class="e-content js-content yue" itemprop="articleBody">
-          <?php $this->content(); ?>
+        <?php $this->content(); ?>
       </div>
+
+      <?php $this->options->invisibleContent(); ?>
     </article>
     <?php $this->need('comments.php'); ?>
   </div>
