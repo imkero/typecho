@@ -398,14 +398,17 @@ class Request
      */
     public function getHeader(string $key, ?string $default = null): ?string
     {
-        $headerKey = strtoupper(str_replace('-', '_', $key));
-        $httpHeaderKey = 'HTTP_' . $headerKey;
-
-        if ($headerKey === 'CONTENT_TYPE' || $headerKey === 'CONTENT_LENGTH') {
-            return $this->getServer($headerKey, $this->getServer($httpHeaderKey, $default));
+        $key = strtoupper(str_replace('-', '_', $key));
+        
+        // Content-Type 和 Content-Length 这两个 header 需要优先从特定的 key 尝试获取
+        if ($key === 'CONTENT_TYPE' || $key === 'CONTENT_LENGTH') {
+            $value = $this->getServer($key);
+            if ($value !== null && $value !== '') {
+                return $value;
+            }
         }
-
-        return $this->getServer($httpHeaderKey, $default);
+        
+        return $this->getServer('HTTP_' . $key, $default);
     }
 
     /**
