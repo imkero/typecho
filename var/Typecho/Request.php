@@ -398,8 +398,14 @@ class Request
      */
     public function getHeader(string $key, ?string $default = null): ?string
     {
-        $key = 'HTTP_' . strtoupper(str_replace('-', '_', $key));
-        return $this->getServer($key, $default);
+        $headerKey = strtoupper(str_replace('-', '_', $key));
+        $httpHeaderKey = 'HTTP_' . $headerKey;
+
+        if ($headerKey === 'CONTENT_TYPE' || $headerKey === 'CONTENT_LENGTH') {
+            return $this->getServer($headerKey, $this->getServer($httpHeaderKey, $default));
+        }
+
+        return $this->getServer($httpHeaderKey, $default);
     }
 
     /**
