@@ -45,7 +45,7 @@ class Plugin implements PluginInterface
         \Typecho\Plugin::factory('Widget_Feedback')->finishComment = __CLASS__ . '::resendMail'; // 前台提交评论完成接口
         \Typecho\Plugin::factory('Widget_Comments_Edit')->finishComment = __CLASS__ . '::resendMail'; // 后台操作评论完成接口
         \Typecho\Plugin::factory('Widget_Comments_Edit')->mark = __CLASS__ . '::mark'; // 后台标记评论状态完成接口
-        \Typecho\Plugin::factory('Widget_Service')->refinishComment = __CLASS__ . '::refinishComment';//异步接口
+        \Typecho\Plugin::factory('Widget_Service')->refinishCommentAsync = __CLASS__ . '::refinishCommentAsync';//异步接口
         Helper::addPanel(1, self::$panel, '评论邮件提醒', '评论邮件提醒控制台', 'administrator');
         return _t('请配置邮箱SMTP选项!');
     }
@@ -230,6 +230,14 @@ class Plugin implements PluginInterface
             }
 
             self::sendMail($edit, $recipients, $type);
+        }
+    }
+
+    public static function refinishCommentAsync($data) {
+        $coid = intval($data['coid']);
+        $comment = Helper::widgetById('comments', $coid);
+        if ($comment->next()) {
+            self::refinishComment($comment);
         }
     }
 
@@ -429,9 +437,11 @@ class Plugin implements PluginInterface
     public static function resendMail($comment)
     {
         if(Options::alloc()->plugin('CommentNotifier')->yibu==1){
-        Helper::requestService('refinishComment', $comment);
-        }else{
-        self::refinishComment($comment);
+            Helper::requestService('refinishCommentAsync', [
+                'coid' => $comment->coid,
+            ]);
+        } else {
+            self::refinishComment($comment);
         }
     }
 
