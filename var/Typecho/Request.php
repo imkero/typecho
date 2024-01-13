@@ -400,14 +400,11 @@ class Request
     {
         $key = strtoupper(str_replace('-', '_', $key));
         
-        // Content-Type 和 Content-Length 这两个 header 需要优先从特定的 key 尝试获取
-        if ($key === 'CONTENT_TYPE' || $key === 'CONTENT_LENGTH') {
-            $value = $this->getServer($key);
-            if ($value !== null && $value !== '') {
-                return $value;
-            }
+        // Content-Type 和 Content-Length 这两个 header 还需要从不带 HTTP_ 的 key 尝试获取
+        if (in_array($key, ['CONTENT_TYPE', 'CONTENT_LENGTH'])) {
+            $default = $this->getServer($key, $default);
         }
-        
+
         return $this->getServer('HTTP_' . $key, $default);
     }
 
