@@ -311,11 +311,11 @@ class Plugin implements PluginInterface
                 $mail->addAddress($recipient['mail'], $recipient['name']); // 发件人
             }
             if ($type == 1) {
-                $mail->Subject = '你在[' . $comment->title . ']的评论有了新的回复';
+                $mail->Subject = '您在《' . $comment->title . '》的评论有新的回复';
             } elseif ($type == 2) {
-                $mail->Subject = '文章《' . $comment->title . '》有条待审评论';
+                $mail->Subject = '文章《' . $comment->title . '》有待审评论';
             } else {
-                $mail->Subject = '你的《' . $comment->title . '》文章有了新的评论';
+                $mail->Subject = '您的文章《' . $comment->title . '》有新的评论';
             }
 
             $mail->isHTML(); // 邮件为HTML格式
