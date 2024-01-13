@@ -203,6 +203,15 @@
   .item.Image h3,
   .item.Review h3,
   .item.Episode h3 {
-    font-size: 20px;
+    font-size: 24px;
+  }
+
+  .item-content {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  h1.p-name {
+    font-size: 30px;
   }
 }
