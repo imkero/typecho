@@ -14,6 +14,8 @@ use Typecho\Db;
 use Typecho\Date;
 use Utils\Helper;
 
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
 /**
  * typecho 评论通过时发送邮件提醒,要求typecho1.2.0及以上,项目地址<a href="https://github.com/jrotty/CommentNotifier" target="_blank">https://github.com/jrotty/CommentNotifier</a>
  * @package CommentNotifier
@@ -236,9 +238,25 @@ class Plugin implements PluginInterface
     public static function refinishCommentAsync($data) {
         $coid = intval($data['coid']);
         $comment = Helper::widgetById('comments', $coid);
-        if ($comment->next()) {
+        if ($comment->have()) {
+            self::fastEndResponse();
             self::refinishComment($comment);
         }
+    }
+
+    public static function fastEndResponse() {
+        $response = Response::getInstance();
+        $response->clean();
+        $response->setHeader('Content-Length', '0');
+        $response->setHeader('Connection', 'close');
+
+        $level = ob_get_level();
+        for ($i = 0; $i < $level; $i++) ob_end_clean();
+        flush();
+
+        ob_start(function ($content) {
+            return '';
+        });
     }
 
 
