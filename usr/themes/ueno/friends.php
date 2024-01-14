@@ -37,7 +37,7 @@ $links = $data && $data['links'] ? $data['links'] : [];
         <?php $this->content(); ?>
       </div>
 
-      <?php $this->options->invisibleContent(); ?>
+      <?php $this->fields->invisibleContent(); ?>
     </article>
     <?php $this->need('comments.php'); ?>
   </div>
