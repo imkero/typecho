@@ -12,6 +12,7 @@ use Widget\Options;
 use Widget\Base\Comments;
 use Typecho\Db;
 use Typecho\Date;
+use Typecho\Response;
 use Utils\Helper;
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
@@ -239,7 +240,7 @@ class Plugin implements PluginInterface
         $coid = intval($data['coid']);
         $comment = Helper::widgetById('comments', $coid);
         if ($comment->have()) {
-            // self::fastEndResponse();
+            self::fastEndResponse();
             self::refinishComment($comment);
         }
     }
