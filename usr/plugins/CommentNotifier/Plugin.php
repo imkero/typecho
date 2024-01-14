@@ -239,7 +239,7 @@ class Plugin implements PluginInterface
         $coid = intval($data['coid']);
         $comment = Helper::widgetById('comments', $coid);
         if ($comment->have()) {
-            self::fastEndResponse();
+            // self::fastEndResponse();
             self::refinishComment($comment);
         }
     }
