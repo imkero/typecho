@@ -20,7 +20,7 @@ $this->need('side.php');
         <?php $this->content(); ?>
       </div>
 
-      <?php $this->fields->invisibleContent(); ?>
+      <?php if ($this->fields->invisibleContent) { $this->fields->invisibleContent(); } ?>
     </article>
     <?php $this->need('comments.php'); ?>
   </div>

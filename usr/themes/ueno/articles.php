@@ -66,7 +66,7 @@ $this->need('side.php');
         </div>
       </div>
 
-      <?php $this->fields->invisibleContent(); ?>
+      <?php if ($this->fields->invisibleContent) { $this->fields->invisibleContent(); } ?>
     </article>
   </div>
 </div>

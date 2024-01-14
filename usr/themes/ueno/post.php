@@ -31,7 +31,7 @@ $this->need('side.php');
           <?php if ($this->fields->disableToc) { $this->content(); } else { printContentWithToc($this->content); } ?>
       </div>
 
-      <?php $this->fields->invisibleContent(); ?>
+      <?php if ($this->fields->invisibleContent) { $this->fields->invisibleContent(); } ?>
 
       <?php if ($this->tags): ?>
         <div class="entry-tags">
