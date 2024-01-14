@@ -249,3 +249,13 @@ textarea.comment-input {
   content: ']';
   margin-left: 2px;
 }
+
+.page-meta {
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+
+.h-entry {
+  position: relative;
+}
