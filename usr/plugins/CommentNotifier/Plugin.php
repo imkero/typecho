@@ -294,7 +294,8 @@ class Plugin implements PluginInterface
         } else {
             // 如果所有评论必须经过审核, 通知博主审核评论
             $recipients[] = ['name' => $fromName, 'mail' => $from];
-            self::sendMail($comment, $recipients, 2);//2为待审核评论
+            // 不发送待审核评论通知邮件
+            // self::sendMail($comment, $recipients, 2);//2为待审核评论
         }
     }
 
