@@ -55,6 +55,19 @@
             <?php _e('管理后台'); ?> <span class="side-nav-more">(<?php $this->user->screenName(); ?>)</span>
           </a>
         </li>
+        <?php if ($this->is('post')): ?>
+          <li>
+            <a href="<?php echo $this->options->adminUrl . 'write-post.php?cid=' . $this->cid; ?>">
+              <?php _e('编辑文章'); ?>
+            </a>
+          </li>
+        <?php elseif ($this->is('page')): ?>
+          <li>
+            <a href="<?php echo $this->options->adminUrl . 'write-page.php?cid=' . $this->cid; ?>">
+              <?php _e('编辑页面'); ?>
+            </a>
+          </li>
+        <?php endif; ?>
         <li class="side-nav-more">
           <a href="<?php $this->options->logoutUrl(); ?>"><?php _e('登出'); ?></a>
         </li>
