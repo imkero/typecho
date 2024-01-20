@@ -242,6 +242,10 @@ textarea.comment-input {
   padding: 10px 14px;
 }
 
+.e-content > div.small > *:last-child {
+  margin-bottom: 0;
+}
+
 .archives-item-category {
   color: #888;
   margin-right: 4px;
