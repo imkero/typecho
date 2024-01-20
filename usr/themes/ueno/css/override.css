@@ -46,7 +46,7 @@ pre code {
 }
 
 .e-content pre {
-  margin-bottom: 1.12em;
+  margin: 0 0 1.12em !important;
   border-radius: 0 !important;
 }
 
