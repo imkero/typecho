@@ -240,6 +240,7 @@ textarea.comment-input {
   color: #666;
   border: 1px solid #ccc;
   padding: 10px 14px;
+  margin-bottom: 1.12em;
 }
 
 .e-content > div.small > *:last-child {
