@@ -235,7 +235,7 @@ textarea.comment-input {
   color: #fff;
 }
 
-.e-content > p.small {
+.e-content > p.small, .e-content > div.small {
   font-size: .8em;
   color: #666;
   border: 1px solid #ccc;
