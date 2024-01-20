@@ -39,9 +39,15 @@ code {
 }
 
 pre code {
-  padding: 3px;
+  padding: 0;
   color: var(--syntax-text);
   background: none;
+  font-size: 15px;
+}
+
+.e-content pre {
+  margin-bottom: 1.12em;
+  border-radius: 0 !important;
 }
 
 .item.Text .item-content,
