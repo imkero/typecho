@@ -175,7 +175,7 @@ class Plugin implements PluginInterface
 
         $client = Client::get();
         $client->setHeader('User-Agent', $options->generator)
-            ->setTimeout(2)
+            ->setTimeout(5)
             ->setJson($payload, Client::METHOD_PUT)
             ->send($pluginOptions->ntfyServer);
 
