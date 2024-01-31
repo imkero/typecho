@@ -61,7 +61,6 @@ class Plugin implements PluginInterface
 
         if (isset($_GET['send-test-notification']) && $_GET['send-test-notification'] === '1') {
             self::sendTestNotification();
-            Notice::alloc()->set('测试通知已发送', 'success');
             Options::alloc()->response->goBack();
         }
     }
@@ -159,7 +158,14 @@ class Plugin implements PluginInterface
             'title' => '测试通知',
         ];
 
-        self::sendNtfy($payload);
+        $client = self::sendNtfy($payload);
+        $statusCode = $client->getResponseStatus();
+        $responseBdy = $client->getResponseBody();
+        if ($statusCode >= 400) {
+            Notice::alloc()->set("测试通知发送失败: [HTTP {$statusCode}] {$responseBdy}", 'error');
+        } else {
+            Notice::alloc()->set('测试通知发送成功', 'success');
+        }
     }
 
     private static function sendNtfy($payload)
@@ -172,5 +178,7 @@ class Plugin implements PluginInterface
             ->setTimeout(2)
             ->setJson($payload, Client::METHOD_PUT)
             ->send($pluginOptions->ntfyServer);
+
+        return $client;
     }
 }
