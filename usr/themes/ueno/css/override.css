@@ -223,7 +223,7 @@ textarea.comment-input {
   margin-bottom: 8px;
 }
 
-.e-content {
+.e-content code {
   word-break: break-all;
 }
 
