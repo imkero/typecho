@@ -41,6 +41,7 @@ class Plugin implements PluginInterface
     public static function config(Form $form)
     {
         Options::alloc()->to($options);
+        $security = \Helper::security();
 
         $ntfyServer = new Text('ntfyServer', null, 'https://ntfy.sh/', 'ntfy 服务器 URL');
         $form->addInput($ntfyServer);
@@ -54,12 +55,14 @@ class Plugin implements PluginInterface
         $testButton = new Submit('send-test-notification');
         $testButton->value('发送测试通知');
         $testButton->input->setAttribute('class', 'btn');
-        $testButton->input->setAttribute('id', 'test-button');
-        $testButton->input->setAttribute('value', '1');
-        $testButton->input->setAttribute('formaction', \Typecho\Common::url('/options-plugin.php?config=CommentNtfy&send-test-notification=1', $options->adminUrl));
+        $testButton->input->setAttribute('formmethod', 'post');
+        $testButton->input->setAttribute('formaction', $security->getAdminUrl('options-plugin.php?config=CommentNtfy&send-test-notification=1'));
         $form->addItem($testButton);
 
-        if (isset($_GET['send-test-notification']) && $_GET['send-test-notification'] === '1') {
+        $request = \Typecho\Request::getInstance();
+
+        if ($request->isPost() && $request->is('send-test-notification=1')) {
+            $security->protect();
             self::sendTestNotification();
             Options::alloc()->response->goBack();
         }
@@ -160,9 +163,9 @@ class Plugin implements PluginInterface
 
         $client = self::sendNtfy($payload);
         $statusCode = $client->getResponseStatus();
-        $responseBdy = $client->getResponseBody();
+        $responseBody = $client->getResponseBody();
         if ($statusCode >= 400) {
-            Notice::alloc()->set("测试通知发送失败: [HTTP {$statusCode}] {$responseBdy}", 'error');
+            Notice::alloc()->set("测试通知发送失败: [HTTP {$statusCode}] {substr($responseBody, 0, 512)}", 'error');
         } else {
             Notice::alloc()->set('测试通知发送成功', 'success');
         }

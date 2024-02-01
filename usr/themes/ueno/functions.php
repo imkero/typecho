@@ -403,6 +403,7 @@ function handleAdminAction() {
     \Widget\Notice::alloc()->to($notice);
 
     if ($request->isPost() && $request->is('ueno_action=write-static-css')) {
+        \Helper::security()->protect();
         if (writeStaticStylesheet()) {
             $notice->set('静态 CSS 文件写入成功', 'success');
         } else {
