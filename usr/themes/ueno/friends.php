@@ -30,11 +30,15 @@ $links = $data && $data['links'] ? $data['links'] : [];
           <?php foreach ($links as $link): ?>
           <div class="link-item">
             <div class="link-avatar">
-              <img class="link-avatar-img" src="<?php echo $link['icon']; ?>">
+              <a href="<?php echo $link['href']; ?>" rel="noopener" target="_blank">
+                <img class="link-avatar-img" src="<?php echo $link['icon']; ?>">
+              </a>
             </div>
             <div class="link-text">
               <div class="link-title">
-                <a href="<?php echo $link['href']; ?>" rel="noopener"><?php echo $link['title']; ?></a>
+                <a href="<?php echo $link['href']; ?>" rel="noopener" target="_blank">
+                  <?php echo $link['title']; ?>
+                </a>
               </div>
               <div class="link-desc"><?php echo $link['desc']; ?></div>
             </div>
