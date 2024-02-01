@@ -857,7 +857,7 @@ class Contents extends Base implements QueryInterface
     {
         $plainTxt = str_replace("\n", '', trim(strip_tags($this->excerpt)));
         $plainTxt = $plainTxt ? $plainTxt : $this->title;
-        return Common::subStr($plainTxt, 0, 100, '...');
+        return Common::subStr($plainTxt, 0, 400, '...');
     }
 
     /**
@@ -900,7 +900,7 @@ class Contents extends Base implements QueryInterface
         $contents = explode('<!--more-->', $content);
         [$excerpt] = $contents;
 
-        return Common::fixHtml(Contents::pluginHandle()->excerptEx($excerpt, $this));
+        return strip_tags(Common::fixHtml(Contents::pluginHandle()->excerptEx($excerpt, $this)), '<p><br>');
     }
 
     /**
